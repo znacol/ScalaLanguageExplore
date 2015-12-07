@@ -23,10 +23,9 @@ object NQueens {
 
 
 	def main(args: Array[String]) {
-		val size: Int = 8
+		val size: Int = args(0).toInt
 				val solutions = placeQueens(size, size)
-				println(solutions.size + " solutions found")
-				// print the board of the first solution
+				println(" solutions: " + solutions.size)
 				for (s <- solutions) {
   				for (queen <- s; x <- 1 to size) {
   					if (queen._2 == x) print("Q ") else print("X ")
