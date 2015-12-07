@@ -1,0 +1,79 @@
+\documentclass[12pt]{article}
+\pagestyle{plain}
+\usepackage[margin=25mm]{geometry}
+%==========SETTINGS FOR IN-TEXT SCALA CODE=============================================
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+%==========DOCUMENT HEADER=============================================================
+\begin{document}
+\title{Scala: Language Explore}
+\date{December 7, 2015}
+\author{Zoe Nacol \\ Kyle Dymowski \\ Charles Tandy \\ Anthony Nguyen}
+\maketitle
+
+%==========ZOE=========================================================================
+\section{Introduction to Scala}
+	\paragraph{}Scala is both an object-oriented and functional language [1]. A portmanteau on ``scalable" and ``language", Scala was created based upon criticism of Java. Scala runs on the Java Virtual Machine. Classes and libraries from both Scala and Java can be freely mixed between the languages.
+\section{Scala Features}
+	\subsection{Concepts Learned in Class}
+	\paragraph{Pattern Matching}
+	\paragraph{Type Inference}
+	\paragraph{Higher Order Functions}
+	\paragraph{} other: functions are objects, lazy evaluation, currying
+%==========KYLE=========================================================================
+	\subsection{Concepts Not Learned in Class}
+		\paragraph{Value Classes and Universal Traits} Paragraph text goes here.
+
+		\paragraph{Implicit Classes}
+
+		\paragraph{String Interpolation} This should be moved up to concepts learned in class.
+
+%========ANTHONY===========================================================================
+		\paragraph{Type System}This should be moved up to concepts learned in class.
+		
+		\paragraph{Raw Strings}
+
+		\paragraph{Flexibility}
+
+		\paragraph{Type Enrichment}
+
+		\paragraph{Concurrency}
+
+%========CHARLES===========================================================================
+\section{Demo Program}
+	\paragraph{}
+
+% IF YOU WANT TO PUT CODE EXAMPLES IN DOCUMENT, looks like this:
+	\begin{lstlisting}
+		val height = 1.9d
+		val name = "James"
+		println(f"$name\%s is $height\%2.2f meters tall") // James is 1.90 meters tall
+	\end{lstlisting}
+\section{References}
+	\begin{enumerate}
+		\item
+			http://www.scala-lang.org/what-is-scala.html
+		\item
+			https://en.wikipedia.org/wiki/Scala\_\%28programming\_language\%29
+	\end{enumerate}
+\end{document}

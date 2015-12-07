@@ -1,0 +1,5 @@
+On a command line, run:
+
+pdflatex ScalaReport.tex
+
+evince ScalaReport.pdf			# pdf viewer, if not installed can manually open .pdf from file manager
