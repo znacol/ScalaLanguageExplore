@@ -24,14 +24,14 @@ object NQueens {
 
 	def main(args: Array[String]) {
 		val size: Int = args(0).toInt
-				val solutions = placeQueens(size, size)
-				println(" solutions: " + solutions.size)
-				for (s <- solutions) {
-  				for (queen <- s; x <- 1 to size) {
-  					if (queen._2 == x) print("Q ") else print("X ")
-  					if (x == size) println()
-  				}
-  				println();
-				}
+		println(" solutions: " + solutions.size)
+		for (s <- solutions) {
+			for (queen <- s; x <- 1 to size) {
+				if (queen._2 == x) print("Q ") else print("X ")
+				if (x == size) println()
+			}
+			println();
+		}
+		val solutions = placeQueens(size, size)
 	}		
 }
