@@ -24,7 +24,7 @@ object NQueens {
 
 	def main(args: Array[String]) {
 		val size: Int = args(0).toInt
-		println(" solutions: " + solutions.size)
+		val solutions = placeQueens(size, size)
 		for (s <- solutions) {
 			for (queen <- s; x <- 1 to size) {
 				if (queen._2 == x) print("Q ") else print("X ")
@@ -32,6 +32,7 @@ object NQueens {
 			}
 			println();
 		}
-		val solutions = placeQueens(size, size)
+		println("solutions: " + solutions.size)
+
 	}		
 }
