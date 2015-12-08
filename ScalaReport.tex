@@ -26,9 +26,9 @@
 }
 %==========DOCUMENT HEADER=============================================================
 \begin{document}
-\title{Scala: Language Explore}
-\date{\footnotesize December 7, 2015}
-\author{\footnotesize Zoe Nacol \\ \footnotesize Kyle Dymowski \\ \footnotesize Charles Tandy \\ \footnotesize Anthony Nguyen}
+\title{Scala: Language Explore \vspace{-2ex}}
+\date{\footnotesize December 7, 2015\vspace{-2ex}}
+\author{\footnotesize Zoe Nacol \qquad Kyle Dymowski \qquad Charles Tandy \qquad Anthony Nguyen \vspace{-2ex}}
 \maketitle
 
 %==========ZOE=========================================================================
@@ -36,14 +36,17 @@
 	\paragraph{}Scala is both an object-oriented and functional language [1]. A portmanteau on ``scalable" and ``language", Scala was created based upon criticism of Java. Running on Java Virtual Machine, language interoperability can be seen between Java and Scala. Both Java and Scala classes and libraries can be mixed. Despite the conventional syntax and it being based off of Java, Scala supports first class functions, immutable data structures, and a general preference of immutability over mutation.
 \section{Scala Features}
 	\subsection{Concepts Learned in Class}
-	\paragraph{}``At the root, the language's scalability is the result of a careful integration of object-oriented and functional language concepts." Scala can be treated as both a scripting language and ``workhorse" language. Because of this, Scala supports many useful features. Many of which were covered in CSCI 400.
-		\paragraph{Pattern Matching}
-		\paragraph{Type Inference}
-		\paragraph{Higher Order Functions}
-		\paragraph{} other: functions are objects, lazy evaluation, currying
+		\paragraph{}``At the root, the language's scalability is the result of a careful integration of object-oriented and functional language concepts" [1]. Scala can be treated as both a scripting language and ``workhorse" language. Because of this, Scala supports many useful features, some of which were covered in CSCI 400.
+		\paragraph{Pattern Matching}Scala supports pattern matching, which we saw when learning Haskell. Pattern matching offers an alternative approach to designing functions. Instead of using a series of if-else and instance-of statements in Java, pattern matching proves a better solution because it can match any data type. In Scala specifically, aliases can be created like the below example:
+		\begin{lstlisting}[xleftmargin=.2\textwidth]
+			address @ Address(\_, \_, "Paris", "France")
+		\end{lstlisting}
+		\paragraph{Type Inference}Scala also supports type inference, as seen in Haskell. This allows the programmer to omit certain type annotations. ``It is...often not necessary...to specify the type of a variable, since the compiler can deduce the type from the initialization expression of the variable." This can also be applied to return types of methods [6].
+		\paragraph{String Interpolation} Scala makes use of string interpolation to create strings of data. This process is used to directly embed variables into string literals. It makes use of three methods of string interpolation. This first is s where string literal allows the usage of variables directly in the string. Second, is f which allows the creation of simple formatted strings similar to printf in PHP. Third, is raw which is essentially the same as s, but with no escaping of literals in the string [5].
+		\paragraph{Other}Other notable features of Scala seen in class include lazy evaluation, currying, higher order functions, and the concept that functions are objects. There are also several features present in Scala but not Java. Some of these include operator overloading, optional parameters (as seen in Haskell), and no checked exceptions [7].
 %==========KYLE=========================================================================
 	\subsection{Concepts Not Learned in Class}
-		\paragraph{Value Classes and Universal Traits} In Java there is no difference between the integer type, it can be used through the program for counters, an entity identifier or a number in an arithmetic expression. In most cases these Integers have nothing to do with each other. It is a common mistake to compare them do arithmetic operations on them, or pass the wrong one into a function as a parameter. A value class allows a new level of type checking that looks at the code rather than relying on the person doing the coding. A value class works like a wrapper class that gives the ability to enrich objects with a precise type without allocation overhead. 
+		\paragraph{Value Classess} In Java there is no difference between the integer type, it can be used through the program for counters, an entity identifier, or a number in an arithmetic expression. In most cases these Integers have nothing to do with each other. It is a common mistake to compare them, do arithmetic operations on them, or pass the wrong one into a function as a parameter. A value class allows a new level of type checking that looks at the code rather than relying on the person doing the coding. A value class works like a wrapper class that gives the ability to enrich objects with a precise type without allocation overhead. 
 
 However, limitations stop values classes from being universally used:
 
@@ -59,29 +62,44 @@ However, limitations stop values classes from being universally used:
 
 		\paragraph{Implicit Classes}Scala allows for extension methods to be added onto another type by introducing implicit classes. The main purpose of an implicit class is to make the process more concise. The method definitions must be declared where the scope allows for method definitions. This works by the implicit method mimicking the constructor of the class [4].
 
-		\paragraph{String Interpolation} Scala makes use of string interpolation to create strings of data. This process is used to directly embed variables into string literals. It makes use of three methods of string interpolation. This first is s where string literal allows the usage of variables directly in the string. Second, is f which allows the creation of simple formatted strings similar to printf in PHP. Third, is raw which is essentially the same as s, but with no escaping of literals in the string [5].
-
-%========ANTHONY===========================================================================
-		\paragraph{Type System}This should be moved up to concepts learned in class.
-		
-		\paragraph{Raw Strings}
-
-		\paragraph{Flexibility}
-
-		\paragraph{Type Enrichment}
-
-		\paragraph{Concurrency}
+		\paragraph{Parallel and Concurrent Programming}Parallel and concurrent programming are performed in scala through the use of \textit{Futures} and \textit{Promises}. \textit{Future} is an object for a value not made yet, a placeholder.  When the value is created, then it is given to \textit{Future} to be completed.  Note: \textit{Future}[T] is the upcoming object; \textit{future} is the method that handles and creates \textit{Future} objects. \textit{Promises} can make \textit{Future} objects.
+		\paragraph{Execution Context}An \textit{ExecutionContext} performs some computation based on the results obtained by \textit{future} and \textit{promise} and properly performing computations at the right time under the desired result.  ForkJoinPool manages threads for the ExecutionContext, helping in asynchronous computation. (EC performs some computation in a thread, like an executor, based on the results of \textit{future} and \textit{promise}.)
+		\paragraph{Futures}Futures are, as stated, objects for values that have yet to be created but will be made eventually.  They have an initial ‘state’ of being not completed, which will not change up until the \textit{Future} obtains the result of some computation.  Once a \textit{Future} has been completed, it can’t change back.  (Can’t change a \textit{Future} when it is already been made).
+		\paragraph{}When a \textit{Future} has been completed, it will either be a success with the expected value or a failure because of some exception due to some error. However, the \textit{Future} will still have that exception, letting it be used however it needs to be.
+		\paragraph{}The \textit{onComplete, onSuccess, and onFailure} methods uses a given callback and executes it on the resulting \textit{future}, preventing the use of blocks which is the goal.  onComplete takes all results (as long as the \textit{Future} has been completed) and executes the proper action based on the \textit{Future} being a Success of Failure.  onSuccess only deals with success cases; onFailure deals with a specific error given due to failure.
+		\paragraph{}Multiple callbacks are ordered by an appropriate \textit{ExecutionContext}.  Using functional composition can be used as an alternate to using callbacks.
+		\paragraph{Promises}\textit{Promises} are another way to make \textit{Futures}.  This is done by first making a \textit{future} by a \textit{future} function on the \textit{promise}, and then taking some computed value and using it to “fulfill” a \textit{promise} and “complete” the \textit{future}.  \textit{Promises} can only be completed once, if it succeeded or failed, then it stays that way and cannot be changed.
 
 %========CHARLES===========================================================================
 \section{Demo Program}
-	\paragraph{}
-
-% IF YOU WANT TO PUT CODE EXAMPLES IN DOCUMENT, looks like this:
+	\paragraph{}For the program, we chose to create n-queens in Scala. We chose n-queens because it allowed us to showcase some of the features of Scala in a non trivial way without being overly complicated. Scala by example was used as a reference for the program.
+	\paragraph{}The function placeQueens was used to recursively place all of the queens. We used lists of tuples to store the queens. We made use of pattern matching using match to check the current column n. This was used to establish a base case for the recursive call. We then used yield to prepend a queen to a list of queens after checking if a queen placement was valid in relation to the other queens.
 	\begin{lstlisting}
-		val height = 1.9d
-		val name = "James"
-		println(f"$name\%s is $height\%2.2f meters tall") // James is 1.90 meters tall
+		def placeQueens(n: Int, size: Int): List[List[(Int, Int)]] = n match {
+			case 0 => List(Nil)
+			case \_ => for {
+				queens <- placeQueens(n -1, size)
+				y <- 1 to size
+				queen = (n, y)
+				if (isSafe(queen, queens))
+			} yield queen :: queens
+		}
+
 	\end{lstlisting}
+	\paragraph{}To check for valid moves we created a method isSafe which takes a tuple to place and a list of tuples representing the placement of the existing queens. In this method we used a conditional for loop that would execute the code returning false if any of the conditions fail for the comparisons with the existing queens.
+	\begin{lstlisting}
+		def isSafe(queen: (Int, Int), others: List[(Int, Int)]): Boolean = {
+			for ( q <- others
+				if q.\_1 == queen.\_1 ||
+				q.\_2 == queen.\_2 ||
+				(q.\_1-queen.\_1).abs == (q.\_2-queen.\_2).abs) {
+				return false
+			}
+			return true
+		}
+
+	\end{lstlisting}
+	\paragraph{}After running the recursive function and returning the lists of tuples we were able to print out a graphical display of all of the valid placements. This portion was relatively trivial and therefore needs no explanation.
 \section{References}
 	\begin{enumerate}
 		\item
@@ -94,5 +112,9 @@ However, limitations stop values classes from being universally used:
 			http://docs.scala-lang.org/overviews/core/implicit-classes.html
 		\item
 			http://docs.scala-lang.org/overviews/core/string-interpolation.html
+		\item
+			http://www.scala-lang.org/old/node/127
+		\item
+			    http://www.scala-lang.org/docu/files/ScalaByExample.pdf
 	\end{enumerate}
 \end{document}
